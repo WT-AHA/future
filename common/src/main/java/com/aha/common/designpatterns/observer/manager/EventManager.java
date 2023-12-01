@@ -1,6 +1,7 @@
 package com.aha.common.designpatterns.observer.manager;
 
-import com.commons.designpatterns.observer.subscriber.EventListener;
+
+import com.aha.common.designpatterns.observer.subscriber.EventListener;
 
 import java.io.File;
 import java.util.ArrayList;

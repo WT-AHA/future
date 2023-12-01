@@ -1,6 +1,6 @@
 package com.aha.common.designpatterns.builder.components;
 
-import com.commons.designpatterns.builder.cars.Car;
+import com.aha.common.designpatterns.builder.cars.Car;
 
 /**
  * 汽车产品特征 - 4 -

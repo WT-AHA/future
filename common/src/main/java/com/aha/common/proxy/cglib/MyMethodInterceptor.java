@@ -1,6 +1,6 @@
 package com.aha.common.proxy.cglib;
 
-import com.commons.proxy.jdk.TimeUtil;
+import com.aha.common.proxy.jdk.TimeUtil;
 import org.springframework.cglib.proxy.MethodInterceptor;
 import org.springframework.cglib.proxy.MethodProxy;
 

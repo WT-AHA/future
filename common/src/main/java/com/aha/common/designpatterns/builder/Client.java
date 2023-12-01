@@ -1,10 +1,11 @@
 package com.aha.common.designpatterns.builder;
 
-import com.commons.designpatterns.builder.builders.CarBuilder;
-import com.commons.designpatterns.builder.builders.CarManualBuilder;
-import com.commons.designpatterns.builder.cars.Car;
-import com.commons.designpatterns.builder.cars.Manual;
-import com.commons.designpatterns.builder.director.Director;
+
+import com.aha.common.designpatterns.builder.builders.CarBuilder;
+import com.aha.common.designpatterns.builder.builders.CarManualBuilder;
+import com.aha.common.designpatterns.builder.cars.Car;
+import com.aha.common.designpatterns.builder.cars.Manual;
+import com.aha.common.designpatterns.builder.director.Director;
 
 /**
  * 客户端使用 建造者 模式 示例

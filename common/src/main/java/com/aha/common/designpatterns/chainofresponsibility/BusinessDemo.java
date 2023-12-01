@@ -1,7 +1,8 @@
 package com.aha.common.designpatterns.chainofresponsibility;
 
-import com.commons.designpatterns.chainofresponsibility.handler.ThrottlingHandler;
-import com.commons.designpatterns.chainofresponsibility.handler.UserHandler;
+
+import com.aha.common.designpatterns.chainofresponsibility.handler.ThrottlingHandler;
+import com.aha.common.designpatterns.chainofresponsibility.handler.UserHandler;
 
 /**
  * 模拟测试责任链的运行流程

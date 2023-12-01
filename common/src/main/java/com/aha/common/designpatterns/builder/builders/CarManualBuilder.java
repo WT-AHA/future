@@ -1,11 +1,11 @@
 package com.aha.common.designpatterns.builder.builders;
 
-import com.commons.designpatterns.builder.cars.CarType;
-import com.commons.designpatterns.builder.cars.Manual;
-import com.commons.designpatterns.builder.components.Engine;
-import com.commons.designpatterns.builder.components.GPSNavigator;
-import com.commons.designpatterns.builder.components.Transmission;
-import com.commons.designpatterns.builder.components.TripComputer;
+import com.aha.common.designpatterns.builder.cars.CarType;
+import com.aha.common.designpatterns.builder.cars.Manual;
+import com.aha.common.designpatterns.builder.components.Engine;
+import com.aha.common.designpatterns.builder.components.GPSNavigator;
+import com.aha.common.designpatterns.builder.components.Transmission;
+import com.aha.common.designpatterns.builder.components.TripComputer;
 
 /**
  * 汽车使用手册的生成器

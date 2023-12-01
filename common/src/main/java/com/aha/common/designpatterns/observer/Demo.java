@@ -1,8 +1,9 @@
 package com.aha.common.designpatterns.observer;
 
-import com.commons.designpatterns.observer.publisher.Publisher;
-import com.commons.designpatterns.observer.subscriber.EmailNotificationListener;
-import com.commons.designpatterns.observer.subscriber.LogOpenListener;
+
+import com.aha.common.designpatterns.observer.publisher.Publisher;
+import com.aha.common.designpatterns.observer.subscriber.EmailNotificationListener;
+import com.aha.common.designpatterns.observer.subscriber.LogOpenListener;
 
 /**
  * 观察者：测试案例

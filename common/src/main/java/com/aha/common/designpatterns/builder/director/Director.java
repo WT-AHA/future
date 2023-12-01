@@ -1,11 +1,11 @@
 package com.aha.common.designpatterns.builder.director;
 
-import com.commons.designpatterns.builder.builders.Builder;
-import com.commons.designpatterns.builder.cars.CarType;
-import com.commons.designpatterns.builder.components.Engine;
-import com.commons.designpatterns.builder.components.GPSNavigator;
-import com.commons.designpatterns.builder.components.Transmission;
-import com.commons.designpatterns.builder.components.TripComputer;
+import com.aha.common.designpatterns.builder.builders.Builder;
+import com.aha.common.designpatterns.builder.cars.CarType;
+import com.aha.common.designpatterns.builder.components.Engine;
+import com.aha.common.designpatterns.builder.components.GPSNavigator;
+import com.aha.common.designpatterns.builder.components.Transmission;
+import com.aha.common.designpatterns.builder.components.TripComputer;
 
 /**
  * 主管类使用通用的 builder 定义构造顺序，因此你可能不知道构造出来了什么产品。

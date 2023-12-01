@@ -1,9 +1,9 @@
 package com.aha.common.designpatterns.builder.cars;
 
-import com.commons.designpatterns.builder.components.Engine;
-import com.commons.designpatterns.builder.components.GPSNavigator;
-import com.commons.designpatterns.builder.components.Transmission;
-import com.commons.designpatterns.builder.components.TripComputer;
+import com.aha.common.designpatterns.builder.components.Engine;
+import com.aha.common.designpatterns.builder.components.GPSNavigator;
+import com.aha.common.designpatterns.builder.components.Transmission;
+import com.aha.common.designpatterns.builder.components.TripComputer;
 
 /**
  * 汽车手册产品

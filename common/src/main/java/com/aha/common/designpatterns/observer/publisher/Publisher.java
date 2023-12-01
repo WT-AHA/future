@@ -1,6 +1,7 @@
 package com.aha.common.designpatterns.observer.publisher;
 
-import com.commons.designpatterns.observer.manager.EventManager;
+
+import com.aha.common.designpatterns.observer.manager.EventManager;
 
 import java.io.File;
 
