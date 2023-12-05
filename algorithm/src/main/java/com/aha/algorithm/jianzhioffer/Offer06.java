@@ -11,6 +11,37 @@ import java.util.LinkedList;
  */
 public class Offer06 {
 
+    /**
+     * @date 2023/12/05 没啥好说的就是确认链表的长度 然后在遍历一次进行反转即可
+     */
+    public int[] reverseBookList(ListNode head) {
+
+        // 边界值判断
+        if (head == null) {
+            return new int[0];
+        }
+
+        // 返回的是一个 int[] 所以只要知道链表的长度就好了
+        int size = 0;
+
+        ListNode current = head;
+        while (current != null) {
+            size ++;
+            current = current.next;
+        }
+
+        int[] result = new int[size];
+        current = head;
+        while (current != null) {
+            result[size-1] = current.val;
+            size --;
+            current = current.next;
+        }
+
+        return result;
+
+    }
+
     public static class ListNode {
 
         int val;

@@ -10,6 +10,52 @@ package com.aha.algorithm.jianzhioffer;
 public class Offer04 {
 
     /**
+     *
+     * 发现了一个规律，在算法题中很少有使用 for 循环的，一般都是使用 while 循环，在符合条件的时候才会使用 i++ 或者 j++
+     * 看不懂这个看下下面的解析
+     */
+    public boolean findTargetIn2DPlants(int[][] plants, int target) {
+
+        // 行数和列数边界判断
+        int row = plants.length;
+        if (row == 0) {
+            return false;
+        }
+        // 列数边界和最大值,最小值判断
+        int column = plants[0].length;
+        if (column == 0 || target > plants[row-1][column-1] || target < plants[0][0]) {
+            return false;
+        }
+
+        // 基本思路，得着一个切入点，一遍比这个数大，一遍比这个数小，这样才可以判断 大于往哪里移动
+        // 小于往哪里移动，所以咱们找 a[0][column] 这个节点作为起点
+        // 就是寻找一个符合二分搜索树特点的节点作为根节点，就转化为 二分搜索树的问题了
+        int i = 0;
+        int j = column - 1;
+        while (i<row && j>=0) {
+
+            if (plants[i][j] == target) {
+                return true;
+            }
+
+            if (plants[i][j] > target) {
+                // 往左移动
+                j--;
+                continue;
+            }
+
+            if (plants[i][j] < target) {
+                // 往下移动
+                i++;
+                continue;
+            }
+
+        }
+        return false;
+
+    }
+
+    /**
      * 使用线性查找的方法，这道题的核心在选择遍历的根节点上，可以选择左下角或者右上角作为遍历的根节点
      * 因为左上角是最小的数据，右下角是最大的数据，当 target 与它们比较的时候没有办法缩小 target 的搜索范围，
      * 比如左上角 为 2 target 为 4，4 > 2, 这个时候不管左移还是右移都会使这个数变大所以没有办法缩小范围
