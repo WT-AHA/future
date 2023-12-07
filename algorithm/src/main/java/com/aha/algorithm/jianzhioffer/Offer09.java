@@ -27,23 +27,28 @@ import java.util.Stack;
  */
 public class Offer09 {
 
-    LinkedList<Integer> stack1;
+    // 双向链表
+    LinkedList<Integer> linkedList;
 
     public Offer09() {
-        stack1 = new LinkedList<>();
+        linkedList = new LinkedList<>();
     }
 
     public void appendTail(int value) {
-        stack1.add(value);
+        linkedList.add(value);
     }
 
     public int deleteHead() {
-        if (stack1.isEmpty()) {
+
+        if (linkedList.isEmpty()) {
             return -1;
         }
-        Integer first = stack1.getFirst();
-        stack1.remove();
-        return first;
+
+//        Integer first = linkedList.getFirst();
+//        linkedList.removeFirst();
+
+        return linkedList.pollFirst();
+
     }
 
 }
@@ -65,6 +70,7 @@ class Offer09_2 {
         // stack1 负责压入数据
         stack1 = new Stack<>();
         // stack2 负责弹出数据
+        // 题意是先进先出，使用两个栈就可以实现，负负得正
         stack2 = new Stack<>();
     }
 
@@ -82,7 +88,7 @@ class Offer09_2 {
                 // 都为空 说明没有数据 返回 -1
                 return -1;
             }
-            // stack1 不为空 要将stack1 中数据存放到stack2 中 已实现队列的先进后出
+            // stack1 不为空 要将stack1 中数据存放到stack2 中 来实现队列的先进后出
             while (!stack1.isEmpty()) {
                 stack2.push(stack1.pop());
             }
