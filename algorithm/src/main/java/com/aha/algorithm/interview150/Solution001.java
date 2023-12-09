@@ -8,9 +8,48 @@ import java.util.Arrays;
 public class Solution001 {
 
     /**
-     * 利用数组非递减的特性
+     * 不新创建数组其实也能解决就是使用第一个数组后面那几个空出的位置
+     * 那就是谁大谁放到最后面位置了，在利用数组非递减的特性，从最后面开始进行比较
      */
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+    public static void merge2(int[] nums1, int m, int[] nums2, int n) {
+
+        int index = nums1.length - 1;
+        while (index >= 0) {
+
+            // nums2 没有数据了 直接放 nums1的数据
+            if (n == 0) {
+                nums1[index] = nums1[m-1];
+                m--;
+                index --;
+                continue;
+            }
+
+            if (m == 0) {
+                nums1[index] = nums2[n-1];
+                n--;
+                index --;
+                continue;
+            }
+
+            if (nums1[m-1] > nums2[n-1]) {
+                // nums1 数据大 将它放到后面
+                nums1[index] = nums1[m-1];
+                m--;
+                index --;
+            } else {
+                nums1[index] = nums2[n-1];
+                n--;
+                index --;
+            }
+
+        }
+
+    }
+
+    /**
+     * 利用数组非递减的特性，新创建了一个数组
+     */
+    public static void merge1(int[] nums1, int m, int[] nums2, int n) {
 
         // 边界值判断
         // nums1 没有数据直接返回 nums2 的数据
@@ -82,7 +121,7 @@ public class Solution001 {
      * 如果不利用数组非递减的特性的话，可以直接将 nums2 数组直接当入到 nums1 数组中，
      * 然后直接对 nums1 数组进行排序即可
      */
-    public static void merge2(int[] nums1, int m, int[] nums2, int n) {
+    public static void merge(int[] nums1, int m, int[] nums2, int n) {
 
         // 将 nums2 添加到 nums1 中
         for (int i=0; i<nums2.length; i++) {
@@ -97,7 +136,7 @@ public class Solution001 {
     public static void main(String[] args) {
         int[] nums1 = {2,0};
         int[] nums2 = {1};
-        merge(nums1, 1, nums2, 1);
+        merge2(nums1, 1, nums2, 1);
         System.out.println(Arrays.toString(nums1));
     }
 
