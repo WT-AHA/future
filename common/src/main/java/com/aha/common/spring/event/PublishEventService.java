@@ -2,7 +2,6 @@ package com.aha.common.spring.event;
 
 import jakarta.annotation.Resource;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationEvent;
 import org.springframework.stereotype.Service;
 
 /**

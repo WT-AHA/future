@@ -1,7 +1,5 @@
-package com.aha.common;
+package com.aha.common.spring.ioc.beanFactory;
 
-import com.aha.common.spring.ioc.beanFactory.SpringDemoApplication;
-import com.aha.common.spring.ioc.beanFactory.UserRegisteredEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -13,13 +11,13 @@ import java.util.Locale;
 import java.util.Map;
 
 @SpringBootApplication
-public class CommonApplication {
+public class SpringDemoApplication {
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SpringApplication.run(CommonApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(SpringDemoApplication.class, args);
 
-        // 国际化 需要 resources 中的配置文件支持   hi 为 key
+        //国际化
         System.out.println("\n国际化示例--------------------------------------");
         System.out.println(context.getMessage("hi", null, Locale.CHINA));
         System.out.println(context.getMessage("hi", null, Locale.ENGLISH));
@@ -53,6 +51,7 @@ public class CommonApplication {
                 System.out.println("环境参数的KEY为----"+x.getKey()+"----环境参数的value为----"+x.getValue())
         );
         System.out.println("------------------------------------------------------\n");
+
     }
 
 }
