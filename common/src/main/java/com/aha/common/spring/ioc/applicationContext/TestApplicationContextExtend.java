@@ -1,6 +1,7 @@
-package com.aha.common.spring.ioc.beanFactory;
+package com.aha.common.spring.ioc.applicationContext;
 
-import com.aha.common.CommonApplication;
+import com.aha.common.spring.event.RegisterInfo;
+import com.aha.common.spring.event.RegisterSuccessEvent;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -11,12 +12,16 @@ import java.io.IOException;
 import java.util.Locale;
 import java.util.Map;
 
-@SpringBootApplication
-public class SpringDemoApplication {
+/**
+ * 测试 ApplicationContext 相对于 beanFactory 的扩展功能
+ * 因为监听程序写在 event 包下需要添加 scanBasePackages = {"com.aha.common"}
+ */
+@SpringBootApplication(scanBasePackages = {"com.aha.common"})
+public class TestApplicationContextExtend {
 
     public static void main(String[] args) {
 
-        ConfigurableApplicationContext context = SpringApplication.run(CommonApplication.class, args);
+        ConfigurableApplicationContext context = SpringApplication.run(TestApplicationContextExtend.class, args);
 
         // 国际化 需要 resources 中的配置文件支持 hi 为 key
         System.out.println("\n国际化示例--------------------------------------");
@@ -42,15 +47,14 @@ public class SpringDemoApplication {
         System.out.println("----------------------------------------------\n");
 
         // 事件发布
-        context.publishEvent(new UserRegisteredEvent(context));
+        System.out.println("事件发布示例-------------------------------------\n");
+        context.publishEvent(new RegisterSuccessEvent(new RegisterInfo().setUsername("aha").setSecret("abc")));
 
         // 环境参数
         System.out.println("获取环境参数示例----------------------------------------");
         ConfigurableEnvironment environment = context.getEnvironment();
         Map<String, Object> systemEnvironment = environment.getSystemEnvironment();
-        systemEnvironment.entrySet().forEach(x->
-                System.out.println("环境参数的KEY为----"+x.getKey()+"----环境参数的value为----"+x.getValue())
-        );
+        systemEnvironment.forEach((key, value) -> System.out.println("环境参数的KEY为----" + key + "----环境参数的value为----" + value));
         System.out.println("------------------------------------------------------\n");
 
     }
