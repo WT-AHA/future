@@ -1,6 +1,5 @@
 package com.aha.common.spring.ioc.applicationContext;
 
-
 import org.springframework.boot.autoconfigure.web.servlet.DispatcherServletRegistrationBean;
 import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactory;
 import org.springframework.boot.web.servlet.context.AnnotationConfigServletWebServerApplicationContext;
@@ -13,6 +12,9 @@ import org.springframework.context.support.FileSystemXmlApplicationContext;
 import org.springframework.web.servlet.DispatcherServlet;
 import org.springframework.web.servlet.mvc.Controller;
 
+/**
+ * 测试 applicationContext 各种实现的功能
+ */
 public class TestKindsOfImplForApplicationContext {
 
     static class Bean1 {
