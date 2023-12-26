@@ -1,0 +1,7 @@
+# springBoot 设置日志级别
+logging:
+  level:
+    # 指定全体日志级别为 info 级别
+    root: info
+    # 指定 com.aha.common.spring.ioc.beanLifeCycle.test01 包下的代码为 debug 级别
+    com.aha.common.spring.ioc.beanLifeCycle: debug
