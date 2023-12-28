@@ -7,4 +7,4 @@ logging:
     com.aha.common.spring.ioc.beanLifeCycle: debug
 
 server:
-  port: 8083
+  port: 8082

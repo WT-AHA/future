@@ -14,10 +14,19 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-/*
-    bean 后处理的的排序
+/**
+ * BeanPostProcessor 排序问题
+ * 1. 实现了 PriorityOrdered 接口的优先级最高
+ * 2. 实现了 Ordered 接口与加了 @Order 注解的平级, 按数字升序
+ * 3. 其它的排在最后
+ *
+ * 16:37:30.926 [main] INFO com.aha.common.spring.ioc.beanLifeCycle.test02.TestBeanPostProcessOrder$P3 -- postProcessBeforeInitialization PriorityOrdered
+ * 16:37:30.928 [main] INFO com.aha.common.spring.ioc.beanLifeCycle.test02.TestBeanPostProcessOrder$P4 -- postProcessBeforeInitialization Ordered
+ * 16:37:30.928 [main] INFO com.aha.common.spring.ioc.beanLifeCycle.test02.TestBeanPostProcessOrder$P1 -- postProcessBeforeInitialization @Order(1)
+ * 16:37:30.928 [main] INFO com.aha.common.spring.ioc.beanLifeCycle.test02.TestBeanPostProcessOrder$P2 -- postProcessBeforeInitialization @Order(2)
+ * 16:37:30.928 [main] INFO com.aha.common.spring.ioc.beanLifeCycle.test02.TestBeanPostProcessOrder$P5 -- postProcessBeforeInitialization
  */
-public class TestBeanProcessorOrder {
+public class TestBeanPostProcessOrder {
 
     @Order(1)
     static class P1 implements BeanPostProcessor {
@@ -55,7 +64,6 @@ public class TestBeanProcessorOrder {
         public int getOrder() {
             return 100;
         }
-
     }
 
     static class P4 implements BeanPostProcessor, Ordered {
@@ -63,7 +71,7 @@ public class TestBeanProcessorOrder {
 
         @Override
         public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-            log.info("postProcessBeforeInitialization getOrder -> 0");
+            log.info("postProcessBeforeInitialization Ordered");
             return bean;
         }
 
@@ -91,14 +99,10 @@ public class TestBeanProcessorOrder {
         List<BeanPostProcessor> list = new ArrayList<>(Arrays.asList(new P1(), new P2(), new P3(), new P4(), new P5()));
         list.sort(beanFactory.getDependencyComparator());
 
-        list.forEach(processor-> processor.postProcessBeforeInitialization(new Object(), ""));
+        list.forEach(processor->{
+            processor.postProcessBeforeInitialization(new Object(), "");
+        });
 
-        /*
-            学到了什么
-                1. 实现了 PriorityOrdered 接口的优先级最高
-                2. 实现了 Ordered 接口与加了 @Order 注解的平级, 按数字升序
-                3. 其它的排在最后
-         */
     }
 
 }
