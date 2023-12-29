@@ -1,5 +1,7 @@
 package com.aha.algorithm.interview150;
 
+import java.security.SecureRandom;
+
 /**
  *
  * https://leetcode.cn/problems/trapping-rain-water/?envType=study-plan-v2&envId=top-interview-150
@@ -66,7 +68,6 @@ public class Solution016 {
     public static void main(String[] args) {
         int[] array = new int[]{2,0,2};
         System.out.println(trap(array));
-
     }
 
 }

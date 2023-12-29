@@ -5,6 +5,7 @@ import org.jasypt.encryption.pbe.StandardPBEStringEncryptor;
 public class EncryptorUtils {
 
 //    private static final String PASSWORD_INFO = "ZdrFZN7zVNVwRC#6";
+
     private static final String PASSWORD_INFO = "yygl";
     public static void main(String[] args) {
 
@@ -16,7 +17,6 @@ public class EncryptorUtils {
         String redisPwd = standardPBEStringEncryptor.encrypt("redis");
         System.out.println("redis 加密之后结果: " + redisPwd);
         System.out.println("redis 解密之后结果: " + standardPBEStringEncryptor.decrypt(redisPwd));
-        System.out.println("redis 解密之后结果: " + standardPBEStringEncryptor.decrypt("ENC(lrsHxo4cOpowJ/DZXPxQDJGcai7TJs/18VNfmjI1viU/gshHutDdwqXeQOTb0omFGRTlFTj5gPwCueDVbqEDRw==) "));
 
     }
 
