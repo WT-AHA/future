@@ -113,7 +113,7 @@ public class Solution017 {
         int leftValue = 10000;
         for (int i = 0; i<length; i++) {
 
-            Integer currentValue = getValue(s.charAt(i));
+            int currentValue = getValue(s.charAt(i));
             if (leftValue < currentValue) {
                 result = result - (leftValue * 2);
             }

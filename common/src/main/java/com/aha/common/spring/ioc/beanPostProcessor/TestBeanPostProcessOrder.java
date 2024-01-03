@@ -37,6 +37,7 @@ public class TestBeanPostProcessOrder {
             log.info("postProcessBeforeInitialization @Order(1)");
             return bean;
         }
+
     }
 
     @Order(2)
@@ -102,6 +103,9 @@ public class TestBeanPostProcessOrder {
         list.forEach(processor->{
             processor.postProcessBeforeInitialization(new Object(), "");
         });
+
+        long maxMemory = Runtime.getRuntime().maxMemory();
+        System.out.println("Max memory: " + maxMemory / 1024 /1024 + "MB");
 
     }
 
