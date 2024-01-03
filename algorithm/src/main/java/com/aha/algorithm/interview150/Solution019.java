@@ -20,7 +20,7 @@ package com.aha.algorithm.interview150;
  *
  * 输入：s = "luffy is still joyboy"
  * 输出：6
- * 解释：最后一个单词是长度为6的“joyboy”。
+ * 解释：最后一个单词是长度为6的“ joyboy”。
  *
  *
  * 提示：
@@ -32,8 +32,25 @@ package com.aha.algorithm.interview150;
  */
 public class Solution019 {
 
-    public int lengthOfLastWord(String s) {
+    public static int lengthOfLastWord(String s) {
 
+        int beginIndex = -1;
+        // 从后往前遍历呗
+        for (int i=s.length()-1; i>=0; i--) {
+            if (s.charAt(i) != ' ' && beginIndex == -1) {
+                beginIndex = i;
+            } else if (s.charAt(i) == ' ' && beginIndex != -1) {
+                return beginIndex - i;
+            }
+
+        }
+
+        return beginIndex + 1;
+
+    }
+
+    public static void main(String[] args) {
+        System.out.println(lengthOfLastWord("Hello World"));
     }
 
 }
