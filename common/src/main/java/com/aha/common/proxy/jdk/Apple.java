@@ -8,6 +8,14 @@ package com.aha.common.proxy.jdk;
  */
 public class Apple implements Fruit{
 
+    protected Apple () {
+
+    }
+
+    protected void testProtectedMethod () {
+
+    }
+
 
     /**
      * 苹果 1000 元

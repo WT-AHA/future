@@ -15,6 +15,9 @@ public class TestExtends {
 
     @Data
     static class Apple implements Fruit {
+        protected Apple () {
+
+        }
         String name = "苹果";
     }
 
