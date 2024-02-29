@@ -8,7 +8,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication(scanBasePackages = {"com.aha.common.jackson"})
 public class CommonApplication {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) { 
 
         SpringApplication.run(CommonApplication.class, args);
 
