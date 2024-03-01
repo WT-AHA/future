@@ -1,4 +1,4 @@
-package com.aha.common.multiThreading.ForkJoinPool;
+package com.aha.common.juc.ForkJoinPool;
 
 import org.springframework.util.StopWatch;
 
@@ -7,6 +7,7 @@ import java.util.concurrent.RecursiveTask;
 
 /**
  * 使用 ForkJoinPool 来计算斐波那契数列
+ *
  * ForkJoinPool 与 ThreadPoolExecutor 的主要区别是
  * ForkJoinPool 的线程池大小是动态调整的，他还支持任务分割和合并的线程池实现，能够自动地处理任务的拆分和合并
  * ForkJoinPool 是基于工作窃取（Work-Stealing）算法实现的线程池，ForkJoinPool 中每个线程都有自己的工作队列，用于存储待执行的任务。
@@ -24,8 +25,16 @@ public class FibonacciTask extends RecursiveTask<Integer> {
         this.n = n;
     }
 
+    // 相当于是 runnable 的 run  callable 的 call
     @Override
     protected Integer compute() {
+
+        try {
+            Thread.sleep(100);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println(Thread.currentThread().getName());
 
         if (n<=1) {
             return n;
@@ -37,13 +46,13 @@ public class FibonacciTask extends RecursiveTask<Integer> {
 //            Integer ft1Result = ft1.compute();
             FibonacciTask ft2 = new FibonacciTask(n - 2);
             // ft2 同步执行
-            Integer ft2Result = ft2.compute();
-//            ft2.fork();
+//            Integer ft2Result = ft2.compute();
+            ft2.fork();
 //
             // 这边同步异步执行其实不大， 主要是看 forkJoinPool.invoke(fibonacciTask) 怎么调度的，切分合并任务的
-            return ft1.join() + ft2Result;
+//            return ft1.join() + ft2Result;
 //            return ft1Result + ft2Result;
-//            return ft1.join() + ft2.join();
+            return ft1.join() + ft2.join();
 
         }
 
@@ -54,7 +63,7 @@ public class FibonacciTask extends RecursiveTask<Integer> {
         StopWatch stopWatch = new StopWatch();
         stopWatch.start();
         ForkJoinPool forkJoinPool = new ForkJoinPool();
-        FibonacciTask fibonacciTask = new FibonacciTask(45);
+        FibonacciTask fibonacciTask = new FibonacciTask(10);
         Integer result = forkJoinPool.invoke(fibonacciTask);
         System.out.println(result);
         stopWatch.stop();
