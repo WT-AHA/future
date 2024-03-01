@@ -9,6 +9,8 @@
 4. JUC 的一个小问题：
    三个线程，一个线程打印 a，一个线程打印 b，一个线程打印 c，同时启动这三个线程，让它们循环以 abc 的方式进行打印 10 次
    com.aha.common.juc.printABC.PrintABCBySemaphore 使用信号量(Semaphore)的方式来实现
+   com.aha.common.juc.printABC.PrintABCByNotifyAndWait 使用 wait 与 notify 来实现，
+   简单介绍 notify 与 notifyAll 的区别
 
 5. com.aha.common.juc.ForkJoinPool.FibonacciTask 使用 ForkJoinPool 来计算斐波那契数列 
    简单介绍 ForkJoinPool 与 ThreadPoolExecutor 的主要区别
