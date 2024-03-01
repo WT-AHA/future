@@ -1,5 +1,5 @@
 1. com.aha.common.juc.thread.TestThread 几种常规创建线程的方式和它们的区别，
-   还有 futureTask 的一些特性，还有是否可以看到方法体中抛出的异常信息
+   还有 futureTask 的一些特性，还有是否可以看到方法体中抛出的异常信息，不打印异常信息的原因是因为提交的时 FutureTask
 
 2. com.aha.common.java8.stream.MapAndFlatMap stream流中 map 和 flatMap 的区别
 
@@ -13,3 +13,8 @@
 5. com.aha.common.juc.ForkJoinPool.FibonacciTask 使用 ForkJoinPool 来计算斐波那契数列 
    简单介绍 ForkJoinPool 与 ThreadPoolExecutor 的主要区别
    com.aha.common.juc.ForkJoinPool.MyRecursiveTask 对 ForkJoinPool 的基础概念和使用方法做了演示
+
+6. com.aha.common.juc.executor.threadPoolExecutor.ThreadPoolExecutorUtils 提供一个自定义线程池的工具类
+   使用双重校验锁的方式来实现 ThreadPoolExecutor 单例对象的获取
+   com.aha.common.juc.executor.threadPoolExecutor.TestThreadPoolExecutor 简单使用了下 CountDownLatch
+   再次探求了下 FutureTask 执行 run 方法体时不打印异常栈的问题；说明 submit 和 execute 提交任务的区别

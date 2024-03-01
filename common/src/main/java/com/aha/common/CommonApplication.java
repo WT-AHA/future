@@ -1,5 +1,6 @@
 package com.aha.common;
 
+import org.springframework.beans.factory.config.ConfigurableListableBeanFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
@@ -8,10 +9,8 @@ import org.springframework.context.ConfigurableApplicationContext;
 @SpringBootApplication(scanBasePackages = {"com.aha.common.jackson"})
 public class CommonApplication {
 
-    public static void main(String[] args) { 
-
+    public static void main(String[] args) {
         SpringApplication.run(CommonApplication.class, args);
-
     }
 
 }

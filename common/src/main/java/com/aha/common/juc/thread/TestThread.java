@@ -26,6 +26,39 @@ import java.util.concurrent.FutureTask;
  *  只有 catch 了，才不会抛出异常
  *  单纯使用 new Thread(runnable).start() 是可以看到 runnable run 的异常的
  *  但是  new Thread(futureTask).start() 不行
+ *  是因为 futureTask 的 run 方法 将异常捕获了，没有抛出来，源码如下
+ *  public void run() {
+ *         if (state != NEW ||
+ *             !RUNNER.compareAndSet(this, null, Thread.currentThread()))
+ *             return;
+ *         try {
+ *             Callable<V> c = callable;
+ *             if (c != null && state == NEW) {
+ *                 V result;
+ *                 boolean ran;
+ *                 try {
+ *                     result = c.call();
+ *                     ran = true;
+ *                 } catch (Throwable ex) {
+ *                     // 将异常捕获了，没有抛出所以在控制台，不会打印相关的异常信息
+ *                     result = null;
+ *                     ran = false;
+ *                     setException(ex);
+ *                 }
+ *                 if (ran)
+ *                     set(result);
+ *             }
+ *         } finally {
+ *             // runner must be non-null until state is settled to
+ *             // prevent concurrent calls to run()
+ *             runner = null;
+ *             // state must be re-read after nulling runner to prevent
+ *             // leaked interrupts
+ *             int s = state;
+ *             if (s >= INTERRUPTING)
+ *                 handlePossibleCancellationInterrupt(s);
+ *         }
+ *     }
  *
  */
 public class TestThread {
