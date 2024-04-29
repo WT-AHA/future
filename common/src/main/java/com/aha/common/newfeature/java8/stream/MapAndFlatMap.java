@@ -1,9 +1,8 @@
-package com.aha.common.java8.stream;
+package com.aha.common.newfeature.java8.stream;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * stream 中 map 与 flatMap 的区别
