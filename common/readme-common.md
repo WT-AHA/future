@@ -20,3 +20,10 @@
    使用双重校验锁的方式来实现 ThreadPoolExecutor 单例对象的获取
    com.aha.common.juc.executor.threadPoolExecutor.TestThreadPoolExecutor 简单使用了下 CountDownLatch
    再次探求了下 FutureTask 执行 run 方法体时不打印异常栈的问题；说明 submit 和 execute 提交任务的区别
+
+7. com.aha.common.newfeature 是新特性的目录
+   7.1 java8.stream stream 相关的
+      7.1.1 com.aha.common.newfeature.java8.stream.MapAndFlatMap stream 的 .map 和 .flatMap 区别
+      7.1.2 com.aha.common.newfeature.java8.stream.MyFunctionInterfaceTest 自定义函数式接口，使用 lambda 表达式来调用参数为函数式接口的方法
+
+8. 
