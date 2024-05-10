@@ -16,7 +16,7 @@ public class ConsumerTest {
              */
             @Override
             public void accept(String s) {
-                System.out.println("消费：" + s);
+                System.out.println("consumer 消费：" + s);
             }
 
         };
@@ -24,8 +24,11 @@ public class ConsumerTest {
         consumer.accept("cake");
 
         // lambda 表达式写法：
-        consumer = str -> System.out.println("消费：" + str);
-        consumer.accept("money");
+        Consumer<String> consumer2 = str -> System.out.println("consumer2 消费：" + str);
+        consumer2.accept("money");
+
+        // 使用 andThen 来进行组合，andThen 里面的函数是 after 执行的
+        consumer.andThen(consumer2).accept("andThen");
 
     }
 

@@ -1,5 +1,6 @@
 package com.aha.common.newfeature.java8.stream.function;
 
+import com.aha.common.newfeature.java8.stream.LambdaInterface;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
@@ -73,6 +74,27 @@ public class FunctionTest {
 
         // 执行组合的函数, (2 * 2) + 1
         System.out.println(composeFunction.apply(2));
+
+        /*
+         * andThen 与 compose 的作用类似也是为了组合函数，只不过他的执行顺序与 compose 相反的
+         * 后执行 andThen 里面的函数
+         */
+        System.out.println(fx.andThen(gx).apply(2));
+
+        /*
+         * Returns a function that always returns its input argument.
+         *
+         * @param <T> the type of the input and output objects to the function
+         * @return a function that always returns its input argument
+         *
+         * static <T> Function<T, T> identity() {
+         *             return t -> t;
+         *         }
+         *
+         * 作用是产生一个输入和输出相同的 Function 实例
+         */
+        Function<String, String> functionIdentity = Function.identity();
+        System.out.println(functionIdentity.apply("functionIdentity"));
 
     }
 
