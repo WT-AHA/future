@@ -12,7 +12,7 @@ public class ConsumerTest {
              * 普通写法
              * Performs this operation on the given argument.
              *
-             * @param t the input argument
+             * @param s the input argument
              */
             @Override
             public void accept(String s) {
