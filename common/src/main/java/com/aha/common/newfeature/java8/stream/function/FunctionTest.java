@@ -1,6 +1,5 @@
 package com.aha.common.newfeature.java8.stream.function;
 
-import com.aha.common.newfeature.java8.stream.LambdaInterface;
 import lombok.Data;
 import lombok.experimental.Accessors;
 import lombok.extern.slf4j.Slf4j;
