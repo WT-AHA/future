@@ -5,6 +5,8 @@ import com.alibaba.excel.annotation.ExcelProperty;
 import com.alibaba.excel.context.AnalysisContext;
 import com.alibaba.excel.event.AnalysisEventListener;
 import com.alibaba.excel.metadata.CellExtra;
+import com.alibaba.excel.support.cglib.beans.BeanMap;
+import com.alibaba.excel.util.BeanMapUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
@@ -15,7 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.beans.IntrospectionException;
 import java.io.IOException;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * 复现 easyExcel 的问题
@@ -97,6 +102,31 @@ public class TestEasyExcelBug {
         public boolean hasNext(AnalysisContext context) {
             return super.hasNext(context);
         }
+
+    }
+
+    public static void main(String[] args) throws InstantiationException, IllegalAccessException, IntrospectionException, InvocationTargetException {
+        User user = User.class.newInstance();
+        BeanMap beanMap = BeanMapUtils.create(user);
+        Object age = beanMap.put("age", 18);
+        System.out.println(age);
+        System.out.println(user);
+
+//        // 属性描述器：通过API方法获取指定类某个属性的读写方法
+//        PropertyDescriptor propertyDescriptor = new PropertyDescriptor("age", User.class);
+//        // 获取 user 字节码对象的 id , username 写方法
+//        Method writeMethod = propertyDescriptor.getWriteMethod();
+//        // 参数1：实例对象 参数2：要设置的值
+//        // 给 user 的实例 o 设置 id 或者 username 属性的值
+//        // 类似于调用 user.setId user.setUsername; 只不过这里不知道 调用 setId 还是 调用 setUsername,
+//        // 所以通过内省的技术，根据列名获取对应属性的 写方法来代替对应属性的 set 方法
+//        writeMethod.invoke(user, 18);
+//        System.out.println(user);
+
+        Field field = ReflectionUtils.findField(User.class, "age");
+        field.setAccessible(true);
+        ReflectionUtils.setField(field, user, 18);
+        System.out.println(user);
 
     }
 
